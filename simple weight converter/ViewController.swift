@@ -14,6 +14,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
+    
+    
+    
     /*------------3--------------------*/
     @IBOutlet weak var pickerView: UIPickerView!
     
@@ -26,8 +29,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return 1
     }
     
-    
-   
+
  
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = weight[row]
@@ -52,7 +54,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     {
         print(weight[row])
         
+        
+        
+        
         if weight[row] == weight[0] {
+            check_input()
             pound_func()
             button1.isHidden = false
             button2.isHidden = true
@@ -61,6 +67,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
             
         else if weight[row] == weight[1] {
+            check_input()
             grams_func()
             button1.isHidden = true
             button2.isHidden = false
@@ -69,6 +76,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
             
         else if weight[row] == weight[2] {
+            check_input()
             kgrams_func()
             button1.isHidden = true
             button2.isHidden = true
@@ -77,6 +85,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
             
         else if weight[row] == weight[3] {
+           check_input()
            ounces_func()
             button1.isHidden = true
             button2.isHidden = true
@@ -84,26 +93,37 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             button4.isHidden = false
         }
     
-    }
+    }  /*--------------End of pickerView func ----------------------------------*/
     
-  /*------------------------------------------------*/
+    
+    
+    /*--------------5 linking the buttons ----------------------------------*/
+    
     @IBAction func convert_Btn(_ sender: Any) {
             pound_func()
+            check_input()
     }
  
     @IBAction func convert_btn2(_ sender: Any) {
          grams_func()
+        check_input()
     }
     
     @IBAction func convert_btn3(_ sender: Any) {
         kgrams_func()
+        check_input()
     }
     
     @IBAction func convert_btn(_ sender: Any) {
         ounces_func()
+        check_input()
     }
     
 /*-----------------------------------------------*/
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -122,9 +142,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
 
     
-    /*---------------4.1------------------*/
+    /*---------------4------------------*/
       //Pounds converter
     func pound_func() {
+        //to avoid the App fro crash an empty value
+        if   jinputField.text == "" {
+            jinputField.text! = "1"
+        }
         print(jinputField.text!)
         let gramsValue = Double(jinputField.text!)! / 0.0022046
         grams.text = String("Grams: \(gramsValue) ")
@@ -191,6 +215,14 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         ounces.text = String("Ounces: \(jinputField.text!)")
     }
 /*---------------------------------------------------------*/
-
-}
+    
+    
+    //to perevent the App crashing when there is an empty value 
+    func check_input(){
+        if   jinputField.text == "" {
+            jinputField.text! = "1"
+        }
+    }
+    /*---------------------------------------------------------*/
+} /*--------End of ViewController class ---------*/
 
