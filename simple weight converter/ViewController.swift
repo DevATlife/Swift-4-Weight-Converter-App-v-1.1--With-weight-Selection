@@ -1,6 +1,5 @@
 
 import UIKit
-
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 /*-------------1-----------------*/
     @IBOutlet weak var jinputField: UITextField!
