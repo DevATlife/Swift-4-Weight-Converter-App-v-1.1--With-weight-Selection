@@ -20,7 +20,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the value you here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="baI-um-sak">
                                 <rect key="frame" x="0.0" y="197" width="375" height="40"/>
-                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="NP8-fh-aPB"/>
                                 </constraints>
@@ -50,7 +50,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ounces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdd-6K-AF5">
                                 <rect key="frame" x="0.0" y="374" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.17945882333587015" green="0.63044847337986287" blue="0.81949952411167515" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.25697952508926392" green="0.57928216457366943" blue="0.96867126226425171" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JjZ-E9-Sfw"/>
                                 </constraints>
@@ -60,7 +60,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pounds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixs-Ce-Ukc">
                                 <rect key="frame" x="0.0" y="424" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.42724115798578077" green="0.83809882614213205" blue="0.74434033584257753" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.36977803707122803" green="0.75661581754684448" blue="0.97257965803146362" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1Zh-05-MGh"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="clJ-sy-XQ5"/>

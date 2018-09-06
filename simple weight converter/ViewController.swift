@@ -205,7 +205,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         let gramsValue3 = Double(jinputField.text!)! * 28.3495
         grams.text = String("Grams: \(gramsValue3) ")
         let KilogramsValue3 = Double(jinputField.text!)! * 0.028349500000294
-        kgrams.text = String("Ounces: \(KilogramsValue3) ")
+        kgrams.text = String("Kilograms: \(KilogramsValue3) ")
         let poundsValue3 = Double(jinputField.text!)! * 0.0625
         pounds.text = String("pounds: \(poundsValue3) ")
         grams.isHidden = false
@@ -216,7 +216,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
 /*---------------------------------------------------------*/
     
-    
+   
     //to perevent the App crashing when there is an empty value 
     func check_input(){
         if   jinputField.text == "" {
