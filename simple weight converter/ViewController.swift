@@ -15,7 +15,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var button4: UIButton!
     
     
-    
     /*------------3--------------------*/
     @IBOutlet weak var pickerView: UIPickerView!
     
