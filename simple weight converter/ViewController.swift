@@ -1,6 +1,8 @@
 
 import UIKit
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  /*--------------UITextFieldDelegate being added to hide keyboard once click away -----------------*/
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 /*-------------1-----------------*/
     @IBOutlet weak var jinputField: UITextField!
     
@@ -10,14 +12,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var pounds: UILabel!
     
     @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: UIButton!
-    @IBOutlet weak var button3: UIButton!
-    @IBOutlet weak var button4: UIButton!
+   
     
     
     
     /*------------3--------------------*/
     @IBOutlet weak var pickerView: UIPickerView!
+    
+    
+    /*-- it is important to difine this variable (selectedWeight) at the top out side of the picker so you can use it to pass the value of pickerView[row] to both switch one with picker and the other one with the button ----*/
+    
+    var selectedWeight: String?  // ? means defaults to nil
     
     
    
@@ -48,77 +53,68 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return weight.count
     }
     
-    
+    /*--- this is trigger when user select an option ----*/
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         print(weight[row])
         
+        selectedWeight = weight[row]
         
-        
-        
-        if weight[row] == weight[0] {
+        switch selectedWeight{
+        case weight[0]:
             check_input()
             pound_func()
-            button1.isHidden = false
-            button2.isHidden = true
-            button3.isHidden = true
-            button4.isHidden = true
-        }
             
-        else if weight[row] == weight[1] {
+            
+        case weight[1]:
             check_input()
             grams_func()
-            button1.isHidden = true
-            button2.isHidden = false
-            button3.isHidden = true
-            button4.isHidden = true
-        }
             
-        else if weight[row] == weight[2] {
+        case weight[2]:
             check_input()
             kgrams_func()
-            button1.isHidden = true
-            button2.isHidden = true
-            button3.isHidden = false
-            button4.isHidden = true
-        }
             
-        else if weight[row] == weight[3] {
-           check_input()
-           ounces_func()
-            button1.isHidden = true
-            button2.isHidden = true
-            button3.isHidden = true
-            button4.isHidden = false
+            
+        case weight[3]:
+            check_input()
+            ounces_func()
+        default:
+            check_input()
+            pound_func()
         }
+        
+        
+    }
     
-    }  /*--------------End of pickerView func ----------------------------------*/
-    
-    
+ 
+  
     
     /*--------------5 linking the buttons ----------------------------------*/
     
     @IBAction func convert_Btn(_ sender: Any) {
-            pound_func()
+        switch selectedWeight{
+        case weight[0]:
             check_input()
+            pound_func()
+            
+            
+        case weight[1]:
+            check_input()
+            grams_func()
+            
+        case weight[2]:
+            check_input()
+            kgrams_func()
+            
+            
+        case weight[3]:
+            check_input()
+            ounces_func()
+        default:
+            check_input()
+            pound_func()
+        }
     }
- 
-    @IBAction func convert_btn2(_ sender: Any) {
-         grams_func()
-        check_input()
-    }
-    
-    @IBAction func convert_btn3(_ sender: Any) {
-        kgrams_func()
-        check_input()
-    }
-    
-    @IBAction func convert_btn(_ sender: Any) {
-        ounces_func()
-        check_input()
-    }
-    
-/*-----------------------------------------------*/
     
     
     
@@ -126,17 +122,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-  /*-------------2--optional---------------*/
-        //jinputField.text = "Enter the pound value you want to convert here" hard coded
-        grams.isHidden = true
-        kgrams.isHidden = true
-        ounces.isHidden = true
-        pounds.isHidden = true
-        
-        button2.isHidden = true
-        button3.isHidden = true
-        button4.isHidden = true
-  /*-------------------------------*/
+
+
+  /*--------- linking the class with the input variable to hide keyboard once click away -----------------*/
+  self.jinputField.delegate = self
     }
 
 
@@ -146,7 +135,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pound_func() {
         //to avoid the App fro crash an empty value
         if   jinputField.text == "" {
-            jinputField.text! = "1"
+            jinputField.text! = "1"    // ! is for saying the variable will never return nil (input field empty) but if it does then the app will crash
+            // so to solve that I pass 1 as defult value by checking if the input field nil or not then excuting check_input() function
+            
         }
         print(jinputField.text!)
         let gramsValue = Double(jinputField.text!)! / 0.0022046
@@ -223,5 +214,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     /*---------------------------------------------------------*/
+    
+    
+   /*---------to hide keyboard once click away or click return buttun on letter keyboard -----------------*/
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        jinputField.resignFirstResponder()
+        return (true)
+    }
 } /*--------End of ViewController class ---------*/
 
